@@ -1,0 +1,5 @@
+streamlit
+google-api-python-client
+python-dotenv
+requests
+duckduckgo-search
