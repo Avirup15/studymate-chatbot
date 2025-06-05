@@ -6,12 +6,12 @@ from googleapiclient.discovery import build
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-# Load API keys from .env
+
 load_dotenv()
 TOGETHER_API_KEY = os.getenv("TOGETHER_API_KEY")
 
 
-# Set Together API endpoint and model
+
 TOGETHER_API_URL = "https://api.together.xyz/v1/completions"
 MODEL_NAME = "mistralai/Mixtral-8x7B-Instruct-v0.1"
 
@@ -86,7 +86,7 @@ def get_web_context(query):
                         snippets.append(snippet)
                 return "\n".join(snippets[:5])
             else:
-                continue  # Try next key
+                continue  
 
         except Exception:
             continue
@@ -149,7 +149,7 @@ Gist:
         "max_tokens": 700,
         "temperature": 0.4,
         "top_p": 0.9
-        # No stop tokens to allow full generation
+        
     }
 
     response = requests.post(TOGETHER_API_URL, headers=headers, json=payload)
@@ -190,10 +190,10 @@ prompt = st.text_input("Ask a study question:")
 prompt = prompt.strip()
 query = f"{prompt} - {subject} - {grade}"
 
-# Initialize how many videos to show
 
 
-# Button to load more videos
+
+
 
 
 if prompt:
@@ -290,7 +290,7 @@ suggested_topics = {
     "evolution": ["Natural Selection", "Darwin", "Genetics"]
 }
 
-if prompt:  # ✅ only check suggestions if user entered something
+if prompt:  
     for keyword in suggested_topics:
         if keyword.lower() in prompt.lower():
             suggestions = random.sample(suggested_topics[keyword], 2)
